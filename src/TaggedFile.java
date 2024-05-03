@@ -14,26 +14,16 @@ public class TaggedFile extends SampledFile{
 		readAndStoreTags();
 	}
 	
+	
 	public void readAndStoreTags() {
-		
-		Map<String, Object> tagMap = TagReader.readTags(getPathname());
-		for (String tag : tagMap.keySet()) {
-		Object value = tagMap.get(tag);
-			switch(tag) {
-			case "author":
-				author = (String) value;
-				break;
-			case "title":
-				title = (String) value;
-				break;
-			case "album":
-				album = (String) value;
-				break;
-			case "duration":
-				duration = (long) value;
-			}
-		}
+	    Map<String, Object> tagMap = TagReader.readTags(getPathname());
+	    
+	    author = (String) tagMap.getOrDefault("author", author);
+	    title = (String) tagMap.getOrDefault("title", title);
+	    album = (String) tagMap.getOrDefault("album", album);
+	    duration = (long) tagMap.getOrDefault("duration", duration);
 	}
+
 	
 	public String getAlbum() {
 		return album.trim();

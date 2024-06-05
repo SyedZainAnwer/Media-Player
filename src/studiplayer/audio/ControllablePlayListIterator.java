@@ -37,7 +37,6 @@ public class ControllablePlayListIterator implements Iterator<AudioFile> {
                 filteredAudioFiles.sort(new DurationComparator());
                 break;
             default:
-                // No sorting needed for DEFAULT
                 break;
         }
 
